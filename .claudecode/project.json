@@ -1,0 +1,59 @@
+{
+  "name": "Mouse Controller",
+  "description": "Professional tool for programmatic mouse cursor movement control with various motion patterns",
+  "version": "1.0.0",
+  "language": "python",
+  "framework": "pyautogui",
+  "entry_point": "mouse_controller/main.py",
+  "test_command": "python -m pytest tests/ -v",
+  "lint_command": "flake8 mouse_controller/ tests/ examples/",
+  "format_command": "black mouse_controller/ tests/ examples/",
+  "install_command": "pip install -r requirements.txt",
+  "run_commands": {
+    "console": "python -m mouse_controller.main",
+    "gui": "python examples/run_gui.py",
+    "examples": "python examples/basic_usage.py",
+    "test": "python test_installation.py"
+  },
+  "dependencies": [
+    "pyautogui>=0.9.54",
+    "pytest>=7.0.0"
+  ],
+  "dev_dependencies": [
+    "black",
+    "flake8",
+    "pytest-cov"
+  ],
+  "project_structure": {
+    "source_dirs": [
+      "mouse_controller/",
+      "tests/",
+      "examples/"
+    ],
+    "config_files": [
+      "requirements.txt",
+      "setup.py",
+      "pyproject.toml",
+      "Makefile"
+    ],
+    "documentation": [
+      "README.md",
+      "QUICKSTART.md",
+      "DEVELOPMENT.md"
+    ]
+  },
+  "features": [
+    "mouse_cursor_control",
+    "geometric_patterns",
+    "gui_interface",
+    "console_interface",
+    "safety_mechanisms",
+    "pattern_generation"
+  ],
+  "safety_notes": [
+    "Failsafe mode enabled by default",
+    "Move mouse to top-left corner for emergency stop",
+    "Automatic boundary validation",
+    "Configurable movement speeds"
+  ]
+}
