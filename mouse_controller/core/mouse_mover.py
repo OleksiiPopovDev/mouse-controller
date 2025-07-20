@@ -33,7 +33,8 @@ class MouseMover:
         self.logger = logging.getLogger(__name__)
 
         self.logger.info(
-            f"MouseMover initialized. Screen size: {self.screen_width}x{self.screen_height}"
+            f"MouseMover initialized. "
+            f"Screen size: {self.screen_width}x{self.screen_height}"
         )
 
     def get_current_position(self) -> Tuple[int, int]:

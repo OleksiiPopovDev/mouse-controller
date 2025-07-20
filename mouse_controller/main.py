@@ -106,7 +106,8 @@ def main():
                 clockwise = get_user_input("Clockwise? (y/n)", str, "y").lower() == "y"
 
                 print(
-                    f"🔄 Moving in circle (radius: {radius}, center: {center_x}, {center_y})"
+                    f"🔄 Moving in circle "
+                    f"(radius: {radius}, center: {center_x}, {center_y})"
                 )
                 wait_with_countdown(3)
                 safe_execute(
