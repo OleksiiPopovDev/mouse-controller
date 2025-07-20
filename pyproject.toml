@@ -31,7 +31,8 @@ classifiers = [
     "Topic :: Multimedia :: Graphics",
 ]
 dependencies = [
-    # Dependencies are handled dynamically in setup.py based on platform and Python version
+    "pyautogui>=0.9.54; python_version >= '3.9' or platform_system != 'Darwin'",
+    "pyautogui==0.9.53; python_version < '3.9' and platform_system == 'Darwin'",
 ]
 
 [project.optional-dependencies]
