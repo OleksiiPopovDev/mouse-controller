@@ -5,92 +5,120 @@ Quick installation and functionality test for Mouse Controller
 
 import sys
 import traceback
+import os
+import locale
+
+# Try to set UTF-8 encoding for better emoji support
+try:
+    if sys.platform == "win32":
+        import io
+        # Try to set UTF-8 mode
+        if hasattr(sys.stdout, 'reconfigure'):
+            sys.stdout.reconfigure(encoding='utf-8')
+            sys.stderr.reconfigure(encoding='utf-8')
+        else:
+            # Fallback for older Python versions
+            sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+            sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
+except Exception:
+    # If UTF-8 setup fails, we'll use ASCII-safe output
+    pass
+
+# Helper function to safely print with emojis
+def safe_print(text):
+    """Print text, falling back to ASCII if Unicode fails"""
+    try:
+        print(text)
+    except UnicodeEncodeError:
+        # Replace emojis with ASCII alternatives
+        ascii_text = text.encode('ascii', 'replace').decode('ascii')
+        print(ascii_text)
 
 def test_imports():
     """Test imports"""
     try:
-        print("🔍 Testing imports...")
+        safe_print("🔍 Testing imports...")
         
         import pyautogui
-        print("✅ pyautogui imported successfully")
+        safe_print("✅ pyautogui imported successfully")
         
         from mouse_controller import MouseMover, PatternGenerator
-        print("✅ MouseMover imported successfully")
-        print("✅ PatternGenerator imported successfully")
+        safe_print("✅ MouseMover imported successfully")
+        safe_print("✅ PatternGenerator imported successfully")
         
         from mouse_controller.utils.helpers import validate_coordinates, get_screen_center
-        print("✅ Helper functions imported successfully")
+        safe_print("✅ Helper functions imported successfully")
         
         return True
     except Exception as e:
-        print(f"❌ Import error: {e}")
+        safe_print(f"❌ Import error: {e}")
         traceback.print_exc()
         return False
 
 def test_basic_functionality():
     """Test basic functionality"""
     try:
-        print("\n🧪 Testing basic functionality...")
+        safe_print("\n🧪 Testing basic functionality...")
         
         from mouse_controller import MouseMover, PatternGenerator
         from mouse_controller.utils.helpers import get_screen_center
         
         # Initialize without mouse movement
         mover = MouseMover(failsafe=False, pause=0)
-        print("✅ MouseMover initialized")
+        safe_print("✅ MouseMover initialized")
         
         # Get screen dimensions
-        print(f"🖥️  Screen size: {mover.screen_width}x{mover.screen_height}")
-        print(f"📍 Screen center: ({mover.center_x}, {mover.center_y})")
+        safe_print(f"🖥️  Screen size: {mover.screen_width}x{mover.screen_height}")
+        safe_print(f"📍 Screen center: ({mover.center_x}, {mover.center_y})")
         
         # Test PatternGenerator
         pattern_gen = PatternGenerator()
-        print("✅ PatternGenerator initialized")
+        safe_print("✅ PatternGenerator initialized")
         
         # Generate test points
         center_x, center_y = get_screen_center()
         circle_points = pattern_gen.generate_circle_points(center_x, center_y, 100, 10)
-        print(f"✅ Generated {len(circle_points)} points for circle")
+        safe_print(f"✅ Generated {len(circle_points)} points for circle")
         
         square_points = pattern_gen.generate_square_points(100, 100, 200)
-        print(f"✅ Generated {len(square_points)} points for square")
+        safe_print(f"✅ Generated {len(square_points)} points for square")
         
         # Test coordinate validation
         from mouse_controller.utils.helpers import validate_coordinates
         valid = validate_coordinates(center_x, center_y, mover.screen_width, mover.screen_height)
-        print(f"✅ Coordinate validation: {'successful' if valid else 'failed'}")
+        safe_print(f"✅ Coordinate validation: {'successful' if valid else 'failed'}")
         
         return True
     except Exception as e:
-        print(f"❌ Functionality error: {e}")
+        safe_print(f"❌ Functionality error: {e}")
         traceback.print_exc()
         return False
 
 def test_gui_availability():
     """Test GUI availability"""
     try:
-        print("\n🖼️  Testing GUI...")
+        safe_print("\n🖼️  Testing GUI...")
         
         import tkinter as tk
-        print("✅ tkinter available")
+        safe_print("✅ tkinter available")
         
         # Test without actually opening GUI
         from mouse_controller.gui.interface import MouseControllerGUI
-        print("✅ GUI module imported successfully")
+        safe_print("✅ GUI module imported successfully")
         
         return True
     except ImportError as e:
-        print(f"⚠️  GUI unavailable: {e}")
-        print("💡 For GUI, tkinter is required: sudo apt-get install python3-tk (Linux)")
+        safe_print(f"⚠️  GUI unavailable: {e}")
+        safe_print("💡 For GUI, tkinter is required: sudo apt-get install python3-tk (Linux)")
         return False
     except Exception as e:
-        print(f"❌ GUI error: {e}")
+        safe_print(f"❌ GUI error: {e}")
         return False
 
 def main():
     """Main test function"""
-    print("🚀 Mouse Controller - Installation Test")
-    print("=" * 50)
+    safe_print("🚀 Mouse Controller - Installation Test")
+    safe_print("=" * 50)
     
     tests_passed = 0
     total_tests = 3
@@ -107,18 +135,18 @@ def main():
     if test_gui_availability():
         tests_passed += 1
     
-    print("\n" + "=" * 50)
-    print(f"📊 Results: {tests_passed}/{total_tests} tests passed")
+    safe_print("\n" + "=" * 50)
+    safe_print(f"📊 Results: {tests_passed}/{total_tests} tests passed")
     
     if tests_passed == total_tests:
-        print("🎉 All tests passed successfully!")
-        print("🖱️  Mouse Controller is ready to use!")
-        print("\n💡 Try:")
-        print("   python -m mouse_controller.main  (console mode)")
-        print("   python examples/run_gui.py       (GUI mode)")
-        print("   python examples/basic_usage.py   (examples)")
+        safe_print("🎉 All tests passed successfully!")
+        safe_print("🖱️  Mouse Controller is ready to use!")
+        safe_print("\n💡 Try:")
+        safe_print("   python -m mouse_controller.main  (console mode)")
+        safe_print("   python examples/run_gui.py       (GUI mode)")
+        safe_print("   python examples/basic_usage.py   (examples)")
     else:
-        print("⚠️  Some tests failed. Please check installation.")
+        safe_print("⚠️  Some tests failed. Please check installation.")
         
     return tests_passed == total_tests
 
