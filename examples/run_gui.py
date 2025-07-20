@@ -7,11 +7,11 @@ import sys
 import os
 
 # Додавання шляху до модуля
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 try:
     from mouse_controller.gui.interface import main
-    
+
     if __name__ == "__main__":
         main()
 except ImportError as e:
