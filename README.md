@@ -3,7 +3,7 @@
 [![CI](https://github.com/yourusername/mouse-controller/workflows/CI/badge.svg)](https://github.com/yourusername/mouse-controller/actions)
 [![codecov](https://codecov.io/gh/yourusername/mouse-controller/branch/main/graph/badge.svg)](https://codecov.io/gh/yourusername/mouse-controller)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
 Professional tool for programmatic mouse cursor movement control with various motion patterns.
 
@@ -174,7 +174,7 @@ mouse_controller/
 
 ## 🔧 Requirements
 
-- **Python**: 3.7 or higher
+- **Python**: 3.8 or higher
 - **Operating System**: Windows 10+, macOS 10.14+, Linux
 - **Dependencies**: See [requirements.txt](requirements.txt)
 

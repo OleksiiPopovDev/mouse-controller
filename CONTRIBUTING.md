@@ -71,7 +71,7 @@ Unsure where to begin contributing? You can start by looking through these issue
 
 ### Prerequisites
 
-- Python 3.7 or higher
+- Python 3.8 or higher
 - Git
 - Virtual environment (recommended)
 
