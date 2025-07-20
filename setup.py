@@ -1,10 +1,24 @@
 from setuptools import setup, find_packages
+import sys
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
-with open("requirements.txt", "r", encoding="utf-8") as fh:
-    requirements = [line.strip() for line in fh if line.strip() and not line.startswith("#")]
+# Base requirements
+requirements = []
+
+# Handle pyautogui dependency based on Python version and platform
+if sys.platform == "darwin" and sys.version_info < (3, 9):
+    # For macOS with Python < 3.9, use older pyautogui version
+    requirements.append("pyautogui==0.9.53")
+else:
+    # For other platforms or Python >= 3.9, use latest pyautogui
+    requirements.append("pyautogui>=0.9.54")
+
+# Add other requirements
+requirements.extend([
+    "pytest>=7.0.0",
+])
 
 setup(
     name="mouse-controller",

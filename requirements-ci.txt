@@ -1,0 +1,9 @@
+# CI/Testing requirements
+# Install package in editable mode with platform-specific dependencies
+-e .
+
+# Testing and linting tools
+pytest>=7.0.0
+pytest-cov
+flake8
+black

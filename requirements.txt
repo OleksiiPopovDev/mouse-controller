@@ -1,2 +1,3 @@
-pyautogui>=0.9.54
-pytest>=7.0.0
+# Base requirements for mouse-controller
+# Note: pyautogui version is handled dynamically in setup.py based on platform and Python version
+# For development, install using: pip install -e .
