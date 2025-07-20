@@ -4,9 +4,9 @@ Console interface for Mouse Controller
 
 import sys
 import time
-from ..core.mouse_mover import MouseMover
-from ..core.patterns import PatternGenerator
-from ..utils.helpers import get_screen_center, get_safe_random_position
+from mouse_controller.core.mouse_mover import MouseMover
+from mouse_controller.core.patterns import PatternGenerator
+from mouse_controller.utils.helpers import get_screen_center, get_safe_random_position
 
 
 def print_menu():

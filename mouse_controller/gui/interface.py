@@ -6,9 +6,9 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 import threading
 import time
-from ..core.mouse_mover import MouseMover
-from ..core.patterns import PatternGenerator
-from ..utils.helpers import get_screen_center
+from mouse_controller.core.mouse_mover import MouseMover
+from mouse_controller.core.patterns import PatternGenerator
+from mouse_controller.utils.helpers import get_screen_center
 
 
 class MouseControllerGUI:
