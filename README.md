@@ -16,6 +16,12 @@ Professional tool for programmatic mouse cursor movement control with various mo
 - **Extensible**: Easy to add custom patterns and movements
 - **Well-Tested**: Comprehensive test suite with high coverage
 
+## 📋 Requirements
+
+- Python 3.8+ (Windows, Linux)
+- Python 3.9+ (macOS) - *Note: macOS requires Python 3.9 or higher due to pyobjc dependencies*
+- tkinter (for GUI interface)
+
 ## 🚀 Quick Start
 
 ### Installation
